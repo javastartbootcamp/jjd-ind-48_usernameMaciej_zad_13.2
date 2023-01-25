@@ -5,12 +5,16 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Main main = new Main();
-        main.run(new Scanner(System.in));
+        try {
+            Main main = new Main();
+            main.run(new Scanner(System.in));
+        } catch (StringIndexOutOfBoundsException e) {
+            System.err.println("Lista jest pusta, spróbuj wpisać liczby od nowa.");
+        }
     }
 
     public void run(Scanner scanner) {
-        List<Integer> listFromUser = getListFromUser();
+        List<Integer> listFromUser = getListFromUser(scanner);
         readListFromBackwards(listFromUser);
         sumNumbers(listFromUser);
         int lowestNumber = getLowestNumber(listFromUser);
@@ -22,7 +26,7 @@ public class Main {
     private int getHighestNumber(List<Integer> listFromUser) {
         int highestNumber = 0;
         for (Integer integer : listFromUser) {
-            if (integer > highestNumber){
+            if (integer > highestNumber) {
                 highestNumber = integer;
             }
         }
@@ -32,7 +36,7 @@ public class Main {
     private int getLowestNumber(List<Integer> listFromUser) {
         int lowestNumber = listFromUser.get(0);
         for (Integer integer : listFromUser) {
-            if (integer < lowestNumber){
+            if (integer < lowestNumber) {
                 lowestNumber = integer;
             }
         }
@@ -61,8 +65,7 @@ public class Main {
         System.out.println(sb);
     }
 
-    private static List<Integer> getListFromUser() {
-        Scanner scanner = new Scanner(System.in);
+    private static List<Integer> getListFromUser(Scanner scanner) {
         List<Integer> numbers = new ArrayList<>();
         boolean negativeNumber = true;
         do {
