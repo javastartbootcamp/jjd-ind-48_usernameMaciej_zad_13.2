@@ -59,7 +59,7 @@ public class Main {
     private void readListFromBackwards(List<Integer> listFromUser) {
         StringBuilder sb = new StringBuilder();
         for (int i = listFromUser.size(); i > 0; i--) {
-            sb.append(listFromUser.get(i - 1) + ", ");
+            sb.append(listFromUser.get(i - 1)).append(", ");
         }
         sb.replace(sb.length() - 2, sb.length() - 1, " ");
         System.out.println(sb);
